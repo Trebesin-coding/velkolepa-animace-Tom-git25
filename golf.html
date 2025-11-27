@@ -1,0 +1,207 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>velkolepa animace</title>
+    <style>
+        body{
+            height: 100vh;
+            background-color: #C6F5B3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .pozadi{
+            border: 1px solid transparent;
+            height: 550px;
+            width: 1300px;
+            background-color:#00AFC2;
+            display: flex;
+            position: relative;
+        }
+        .trava{
+            border: 1px solid transparent;
+            height: 40px;
+            width: 1300px;
+            background-color: #7ED957;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+           
+           
+        }
+        .slunce{
+            border: 1px solid transparent;
+            border-radius: 100%;
+            height: 100px;
+            aspect-ratio: 1/1;
+            background-color: yellow;
+            margin-top: 60px;
+            margin-left: 80px;
+            animation: slunicko 2s alternate infinite;
+            transition: transform 2s ease-in-out ;
+        }
+        .slunce:hover{
+            transform: scale(150%);
+        }
+        .mrak{
+            height: 100px;
+            width: 300px;
+            margin-top: 60px;
+            margin-left: 200px;
+            transition: filter 2s ease-out ;
+           
+        }
+        .mrak:hover{
+            filter: brightness(70%);
+        }
+        .mrak2{
+            height: 100px;
+            width: 300px;
+            margin-top: 60px;
+            margin-right: 250px;
+            margin-left: 30px;
+            animation: mracek_jizda 4s alternate infinite ease-in-out;
+        }
+        .vlajka{
+            height: 150px;
+            position: absolute;
+            bottom: 15px;
+            right: 200px;
+           
+        }
+        .micek{
+            height: 15px;
+            aspect-ratio: 1/1;
+            border: 1px solid transparent;
+            border-radius: 100%;
+            background-color: white;
+            bottom: 15px;
+            left: 200px;
+            position: absolute;
+           
+        }
+        .odjezdAnimace{
+            animation: odjezd 7s 2.5s ease-in-out  forwards;
+        }
+        .tlacitko{
+            position: absolute;
+            background-color: green;
+            color: white;
+            bottom: 10px;
+            right: 40px;
+        }
+        .panacek{
+            position: absolute;
+            height: 150px;
+            bottom: 30px;
+            left: 105px;
+        }
+        .hole{
+            position: absolute;
+            height: 110px;
+            bottom: 10px;
+            left: 135px;
+            
+        }
+        .holeAnimace{
+            animation: odpal 3s  ;
+        }
+        .vitez{
+            opacity: 0;
+            height: 35px;
+            width: 70px;
+            border: 1px solid orange;
+            border-radius: 20px;
+            position: absolute;
+            background-color: lightyellow;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            bottom: 190px;
+            left: 160px;
+        }
+        .viteznaAnimace{
+            animation: hura 5s 7s ;
+        }
+        @keyframes odpal {
+            0%{
+                rotate: 0deg;
+            }
+            50%{
+                rotate: 30deg;
+            }
+            100%{
+                rotate: -6deg;
+            }
+        }
+        @keyframes odjezd {
+            0%{
+                translate: 0 0 ;
+            }
+            50%{
+                translate: 840px 0;
+            }
+            70%{
+                opacity: 100%;
+            }
+            75%{
+                translate: 840px 5px;
+                opacity: 0;
+            }
+           
+            100%{
+               opacity: 0;
+            }
+        }
+        @keyframes slunicko {
+            100%{
+                box-shadow: 0 0 90px orange;
+            }
+        }
+        @keyframes mracek_jizda {
+           0%{
+            translate: 0 0 ;
+           }
+           100%{
+            translate: 180px 0 ;
+           }
+        }
+        @keyframes hura {
+            0%{
+                opacity: 0;
+            }
+            100%{
+                opacity: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="pozadi">
+        <div class="slunce"></div>
+        <div><img src="maracek.png" alt="bily maracek" class="mrak"></div>
+        <div><img src="maracek.png" alt="bily maracek" class="mrak2"></div>
+        <div class="trava"></div>
+        <div><img src="vlajka2.png" alt="cervena vlajka jamky" class="vlajka"></div>
+        <div class="micek"></div>
+        <div><img src="panacek.png" alt="hrac golfu" class="panacek"></div>
+        <div><img src="golfova hole.png" alt="minigolofova hole" class="hole"></div>
+        <div class="vitez">🎉🏆🎉</div>
+        <button class="tlacitko">zahraj jamku</button>
+    </div>
+</body>
+<script>
+   const tlacitko = document.querySelector(".tlacitko")
+   const hole = document.querySelector(".hole")
+   const micek = document.querySelector(".micek")
+   const vitez = document.querySelector(".vitez")
+   tlacitko.addEventListener("click", function(){
+     hole.classList.toggle("holeAnimace")
+     micek.classList.toggle("odjezdAnimace")
+     vitez.classList.toggle("viteznaAnimace")
+   })
+</script>
+</html>
